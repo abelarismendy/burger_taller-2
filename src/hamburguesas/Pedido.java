@@ -47,7 +47,7 @@ public class Pedido {
         String datosPrecio = "Precio neto: $" + getPrecioNetoPedido() + " IVA: $" + getPrecioIVAPedido() + " Total: $" + getPrecioTotalPedido();
         String datosItems = "Items del pedido:\n";
         for (Producto item : this.itemsPedido) {
-            datosItems += item.generarTextoFactura() + "\n";
+            datosItems += " -" + item.generarTextoFactura() + "\n";
         }
         return datosPedido + "\n" + datosItems + "\n" + datosPrecio;
     }

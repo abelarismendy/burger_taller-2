@@ -19,3 +19,8 @@ Más información en el siguiente [documento.](docs/hamburguesas.pdf)
 # Diagrama de clases resumido (UML)
 
 ![diagrama de clases resumido](resumido.png)
+
+
+# Desarrollo del taller
+
+## [Parte 1: Implementar el modelo de clases de la lógica](docs/implement.md)
