@@ -15,3 +15,7 @@ problemas relacionados con invocar métodos sobre referencias con valor null.
 permitan resolver problemas técnicos puntuales
 
 Más información en el siguiente [documento.](docs/hamburguesas.pdf)
+
+# Diagrama de clases resumido (UML)
+
+![diagrama de clases resumido](resumido.png)
