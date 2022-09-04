@@ -1,7 +1,7 @@
 package hamburguesas;
 import java.util.List;
 import java.util.ArrayList;
-// import java.io.File;
+import java.io.*;
 
 public class Pedido {
     static int numeroPedidos = 0;
@@ -52,13 +52,19 @@ public class Pedido {
         return datosPedido + "\n" + datosItems + "\n" + datosPrecio;
     }
 
-    // public String guardarFactura(File archivo) {
-    //     String textoFactura = generarTextoFactura();
+    public String guardarFactura(File archivo) {
+        String textoFactura = generarTextoFactura();
+        String mensaje;
 
+        try {
+            FileWriter escritor = new FileWriter(archivo);
+            escritor.write(textoFactura);
+            escritor.close();
+            mensaje = "Factura guardada en " + archivo.getAbsolutePath();
+        } catch (IOException e) {
+            mensaje = "Error al guardar la factura";
+        }
 
-
-    //     String mensaje = "Factura guardada en " + archivo.getAbsolutePath();
-
-    //     return mensaje;
-    // }
+        return mensaje;
+    }
 }
