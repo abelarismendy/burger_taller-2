@@ -111,7 +111,7 @@ public class Restaurante {
         return null;
     }
 
-    private void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
+    public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
         cargarIngredientes(archivoIngredientes);
         cargarMenu(archivoMenu);
         cargarCombos(archivoCombos);
