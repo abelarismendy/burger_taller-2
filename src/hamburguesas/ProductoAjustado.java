@@ -1,5 +1,6 @@
 package hamburguesas;
 import java.util.List;
+import java.util.ArrayList;
 
 public class ProductoAjustado implements Producto {
     private ProductoMenu base;
@@ -10,6 +11,8 @@ public class ProductoAjustado implements Producto {
 
     public ProductoAjustado(ProductoMenu base) {
         this.base = base;
+        this.agregados = new ArrayList<Ingrediente>();
+        this.eliminados = new ArrayList<Ingrediente>();
     }
 
     public String getNombre() {
