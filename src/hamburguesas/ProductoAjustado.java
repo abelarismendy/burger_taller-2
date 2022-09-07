@@ -28,7 +28,7 @@ public class ProductoAjustado implements Producto {
     }
 
     public String generarTextoFactura() {
-        String texto = base.generarTextoFactura();
+        String texto = getNombre() + " $" + getPrecio();
         for (Ingrediente ingrediente : agregados) {
             texto += " + " + ingrediente.getNombre();
         }

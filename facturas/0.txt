@@ -1,0 +1,6 @@
+Pedido #0 para ANGEL residente en 12233
+Items del pedido:
+ -combo especial $32084
+ -gaseosa $8500 + piña + lechuga - cebolla grille
+
+Precio neto: $40584 IVA: $7710 Total: $48294

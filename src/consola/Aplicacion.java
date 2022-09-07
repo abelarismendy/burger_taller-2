@@ -238,7 +238,7 @@ public class Aplicacion {
 		if (restaurante.getPedidoEnCurso() != null) {
 			Pedido pedido = restaurante.getPedidoEnCurso();
 			int numeroPedido = pedido.getIdPedido();
-			String rutaArchivo = "../facturas/" + numeroPedido + ".txt";
+			String rutaArchivo = "facturas/" + numeroPedido + ".txt";
 			File archivo = new File(rutaArchivo);
 			System.out.println(pedido.guardarFactura(archivo));
 			restaurante.cerrarYGuardarPedido();
@@ -256,32 +256,33 @@ public class Aplicacion {
 				int numeroPedido = Integer.parseInt(input("Por favor ingrese el número de pedido"));
 				if (numeroPedido >= pedidos.size()){
 					System.out.println("El número de pedido ingresado no existe.");
-					ejecutarConsultarInformacionPedido();
 				}
-				Pedido pedido = restaurante.getPedido(numeroPedido);
-				if (pedido != null) {
-					File archivo = new File("../facturas/" + numeroPedido + ".txt");
-					if (!archivo.exists()) {
-						System.out.println("No se ha encontradoo la factura del pedido " + numeroPedido + ".");
-						System.out.println("Generando factura...");
-						pedido.guardarFactura(archivo);
-						System.out.println("Factura generada.");
-						System.out.println("Factura del pedido " + numeroPedido + ":");
-					}
-
-					try {
-						BufferedReader br = new BufferedReader(new FileReader(archivo));
-						String linea;
-						while ((linea = br.readLine()) != null) {
-							System.out.println(linea);
+				else {
+					Pedido pedido = restaurante.getPedido(numeroPedido);
+					if (pedido != null) {
+						File archivo = new File("facturas/" + numeroPedido + ".txt");
+						if (!archivo.exists()) {
+							System.out.println("No se ha encontradoo la factura del pedido " + numeroPedido + ".");
+							System.out.println("Generando factura...");
+							pedido.guardarFactura(archivo);
+							System.out.println("Factura generada.");
+							System.out.println("Factura del pedido " + numeroPedido + ":");
 						}
-						br.close();
-					} catch (IOException e) {
-						System.out.println("No se ha podido leer la factura del pedido " + numeroPedido + ".");
-					}
 
-				} else {
-					System.out.println("No existe un pedido con ese número.");
+						try {
+							BufferedReader br = new BufferedReader(new FileReader(archivo));
+							String linea;
+							while ((linea = br.readLine()) != null) {
+								System.out.println(linea);
+							}
+							br.close();
+						} catch (IOException e) {
+							System.out.println("No se ha podido leer la factura del pedido " + numeroPedido + ".");
+						}
+
+						} else {
+							System.out.println("No existe un pedido con ese número.");
+					}
 				}
 			} catch (NumberFormatException e) {
 				System.out.println("Debe ingresar un número de pedido válido.");
