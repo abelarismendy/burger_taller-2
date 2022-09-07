@@ -23,4 +23,16 @@ Durante la implementación de la clase Restaurante observamos era necesario aña
     }
 ```
 
+Además, en la clase ProductoAjustado se implementaron dos metodos para poder agregar ingredientes a cada una de las listas de ingredientes (agregados y eliminados). Ya que, de otra forma no habia manera de agregar ingredientes a estas listas.
+
+```java
+    public void agregarIngrediente(Ingrediente ingrediente) {
+        agregados.add(ingrediente);
+    }
+
+    public void eliminarIngrediente(Ingrediente ingrediente) {
+        eliminados.add(ingrediente);
+    }
+```
+
 # [&#8592;](../README.md)
