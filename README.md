@@ -1,3 +1,7 @@
+# Autores
+- Abel Arismendy 202020625 a.arismendy
+- Maria Leyva 202120269 m.leyvav
+
 # Objetivo general
 El objetivo de este taller es aprender a implementar en Java un modelo de clases dado, reconocer los diferentes componentes que podrían aparecer en un modelo de clases y practicar la implementación de algoritmos básicos en Java
 
