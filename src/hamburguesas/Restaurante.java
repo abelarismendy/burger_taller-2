@@ -1,6 +1,5 @@
 package hamburguesas;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
@@ -8,8 +7,8 @@ import java.io.*;
 public class Restaurante {
     private ArrayList<ProductoMenu> menuBase;
     private ArrayList<Ingrediente> ingredientes;
-    private List<Pedido> pedidos;
-    private List<Combo> combos;
+    private ArrayList<Pedido> pedidos;
+    private ArrayList<Combo> combos;
     private Pedido pedidoEnCurso;
 
     public Restaurante() {
@@ -29,7 +28,17 @@ public class Restaurante {
     }
 
     public Pedido getPedidoEnCurso() {
+        if (pedidoEnCurso == null) {
+            throw new RuntimeException("No hay un pedido en curso");
+        }
         return pedidoEnCurso;
+    }
+
+    public Pedido getPedido(int numeroPedido) {
+        if (numeroPedido < 0 || numeroPedido >= pedidos.size()) {
+            throw new RuntimeException("No existe el pedido");
+        }
+        return pedidos.get(numeroPedido);
     }
 
     public ArrayList<ProductoMenu> getMenuBase() {
@@ -115,6 +124,14 @@ public class Restaurante {
         cargarIngredientes(archivoIngredientes);
         cargarMenu(archivoMenu);
         cargarCombos(archivoCombos);
+    }
+
+    public ArrayList<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public ArrayList<Combo> getCombos() {
+        return combos;
     }
 
 }
