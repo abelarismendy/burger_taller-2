@@ -74,8 +74,13 @@ public class Aplicacion {
 
 	private void ejecutarMostrarMenu() {
 		ArrayList<ProductoMenu> menu = restaurante.getMenuBase();
+		System.out.println("Menú:");
 		for (ProductoMenu producto : menu) {
 			System.out.println(producto.getNombre() + " - " + producto.getPrecio());
+		}
+		System.out.println("Combos:");
+		for (Combo combo : restaurante.getCombos()) {
+			System.out.println(combo.getNombre() + " - " + combo.getPrecio());
 		}
 	}
 
