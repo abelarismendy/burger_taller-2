@@ -63,6 +63,7 @@ public class Pedido {
             mensaje = "Factura guardada en " + archivo.getAbsolutePath();
         } catch (IOException e) {
             mensaje = "Error al guardar la factura";
+            System.out.println(e);
         }
 
         return mensaje;

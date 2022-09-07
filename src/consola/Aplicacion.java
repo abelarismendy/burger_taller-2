@@ -18,9 +18,9 @@ public class Aplicacion {
 
 	public void ejecutarAplicacion() {
 		restaurante = new Restaurante();
-		File archivoIngredientes = new File("../data/ingredientes.txt");
-		File archivoMenu = new File("../data/menu.txt");
-		File archivoCombos = new File("../data/combos.txt");
+		File archivoIngredientes = new File("./data/ingredientes.txt");
+		File archivoMenu = new File("./data/menu.txt");
+		File archivoCombos = new File("./data/combos.txt");
 		restaurante.cargarInformacionRestaurante(archivoIngredientes, archivoMenu, archivoCombos);
 
 		boolean continuar = true;
@@ -50,14 +50,19 @@ public class Aplicacion {
 		switch (opcionSeleccionada) {
 		case 1:
 			ejecutarMostrarMenu();
+			break;
 		case 2:
 			ejecutarIniciarPedido();
+			break;
 		case 3:
 			ejecutarAgregarProductoAPedido();
+			break;
 		case 4:
 			ejecutarCerrarPedidoYGenerarFactura();
+			break;
 		case 5:
 			ejecutarConsultarInformacionPedido();
+			break;
 		case 6:
 			System.out.println("Saliendo de la aplicación...");
 			return false;
@@ -75,11 +80,11 @@ public class Aplicacion {
 	}
 
 	private void ejecutarIniciarPedido() {
-		String nombreCliente = input("Por favor ingrese el nombre del cliente");
-		String direccionCliente = input("Por favor ingrese la dirección del cliente");
 		if (restaurante.getPedidoEnCurso() != null) {
 			System.out.println("Ya hay un pedido en curso, por favor cierre el pedido actual antes de iniciar uno nuevo.");
 		} else {
+			String nombreCliente = input("Por favor ingrese el nombre del cliente");
+			String direccionCliente = input("Por favor ingrese la dirección del cliente");
 			restaurante.iniciarPedido(nombreCliente, direccionCliente);
 		}
 	}
@@ -235,7 +240,7 @@ public class Aplicacion {
 			int numeroPedido = pedido.getIdPedido();
 			String rutaArchivo = "../facturas/" + numeroPedido + ".txt";
 			File archivo = new File(rutaArchivo);
-			pedido.guardarFactura(archivo);
+			System.out.println(pedido.guardarFactura(archivo));
 			restaurante.cerrarYGuardarPedido();
 
 			System.out.println("Pedido cerrado y factura generada.");
@@ -249,6 +254,10 @@ public class Aplicacion {
 		if (pedidos.size() > 0) {
 			try {
 				int numeroPedido = Integer.parseInt(input("Por favor ingrese el número de pedido"));
+				if (numeroPedido >= pedidos.size()){
+					System.out.println("El número de pedido ingresado no existe.");
+					ejecutarConsultarInformacionPedido();
+				}
 				Pedido pedido = restaurante.getPedido(numeroPedido);
 				if (pedido != null) {
 					File archivo = new File("../facturas/" + numeroPedido + ".txt");

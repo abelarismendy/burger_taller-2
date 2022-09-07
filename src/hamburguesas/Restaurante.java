@@ -29,14 +29,14 @@ public class Restaurante {
 
     public Pedido getPedidoEnCurso() {
         if (pedidoEnCurso == null) {
-            throw new RuntimeException("No hay un pedido en curso");
+            return null;
         }
         return pedidoEnCurso;
     }
 
     public Pedido getPedido(int numeroPedido) {
         if (numeroPedido < 0 || numeroPedido >= pedidos.size()) {
-            throw new RuntimeException("No existe el pedido");
+            System.out.println("No existe el pedido");
         }
         return pedidos.get(numeroPedido);
     }
@@ -95,7 +95,10 @@ public class Restaurante {
                 String data = myReader.nextLine();
                 String[] datos = data.split(";");
                 String nombre = datos[0];
-                double descuento = Double.parseDouble(datos[1]);
+                String descuentoSinFormato = datos[1];
+                descuentoSinFormato = descuentoSinFormato.replace("%", "");
+                int descuentoInt = Integer.parseInt(descuentoSinFormato);
+                double descuento = (double) descuentoInt / 100;
                 Combo combo = new Combo(nombre, descuento);
                 for (int i = 2; i < datos.length; i++) {
                     String nombreProducto = datos[i];
