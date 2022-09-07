@@ -24,9 +24,6 @@ public class ProductoAjustado implements Producto {
         for (Ingrediente ingrediente : agregados) {
             precio += ingrediente.getCostoAdicional();
         }
-        for (Ingrediente ingrediente : eliminados) {
-            precio -= ingrediente.getCostoAdicional();
-        }
         return precio;
     }
 
