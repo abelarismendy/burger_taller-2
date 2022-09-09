@@ -21,7 +21,8 @@ public class Aplicacion {
 		File archivoIngredientes = new File("./data/ingredientes.txt");
 		File archivoMenu = new File("./data/menu.txt");
 		File archivoCombos = new File("./data/combos.txt");
-		restaurante.cargarInformacionRestaurante(archivoIngredientes, archivoMenu, archivoCombos);
+		File archivoBebidas = new File("./data/bebidas.txt");
+		restaurante.cargarInformacionRestaurante(archivoIngredientes, archivoMenu, archivoCombos, archivoBebidas);
 
 		boolean continuar = true;
 
@@ -82,6 +83,10 @@ public class Aplicacion {
 		for (Combo combo : restaurante.getCombos()) {
 			System.out.println(combo.getNombre() + " - " + combo.getPrecio());
 		}
+		System.out.println("\nBebidas:");
+		for (ProductoMenu bebida : restaurante.getBebidas()) {
+			System.out.println(bebida.getNombre() + " - " + bebida.getPrecio());
+		}
 	}
 
 	private void ejecutarIniciarPedido() {
@@ -101,12 +106,15 @@ public class Aplicacion {
 			System.out.println("Desea agregar un combo o un producto individual?");
 			System.out.println("1. Combo");
 			System.out.println("2. Producto individual");
+			System.out.println("3. Bebida");
 			try {
 				int opcion = Integer.parseInt(input("Por favor ingrese una opción"));
 				if (opcion == 1) {
 					ejecutarAgregarComboAPedido();
 				} else if (opcion == 2) {
 					ejecutarAgregarProductoIndividualAPedido();
+				} else if (opcion == 3) {
+					ejecutarAgregarBebidaAPedido();
 				} else {
 					System.out.println("Debe seleccionar uno de los números de las opciones.");
 				}
@@ -114,6 +122,29 @@ public class Aplicacion {
 				System.out.println("Debe seleccionar uno de los números de las opciones.");
 				ejecutarAgregarProductoAPedido();
 			}
+		}
+	}
+
+	private void ejecutarAgregarBebidaAPedido() {
+		ArrayList<ProductoMenu> bebidas = restaurante.getBebidas();
+		System.out.println("Bebidas:");
+		for (int i = 0; i < bebidas.size(); i++) {
+			System.out.println((i + 1) + ". " + bebidas.get(i).getNombre() + " - " + bebidas.get(i).getPrecio());
+		}
+		try {
+			int opcion = Integer.parseInt(input("Por favor ingrese una opción"));
+			if (opcion > 0 && opcion <= bebidas.size()) {
+				Pedido pedido = restaurante.getPedidoEnCurso();
+				ProductoMenu bebida = bebidas.get(opcion - 1);
+				pedido.agregarProducto(bebida);
+				System.out.println("Se agregó la bebida " + bebida.getNombre() + " al pedido.");
+			} else {
+				System.out.println("Debe seleccionar uno de los números de las opciones.");
+				ejecutarAgregarBebidaAPedido();
+			}
+		} catch (NumberFormatException e) {
+			System.out.println("Debe seleccionar uno de los números de las opciones.");
+			ejecutarAgregarBebidaAPedido();
 		}
 	}
 
@@ -129,7 +160,7 @@ public class Aplicacion {
 				Pedido pedido = restaurante.getPedidoEnCurso();
 				Combo comboSeleccionado = combos.get(opcion - 1);
 				pedido.agregarProducto(comboSeleccionado);
-				System.out.println("Combo agregado al pedido.");
+				System.out.println(comboSeleccionado.getNombre() + " agregado al pedido.");
 			} else {
 				System.out.println("Debe seleccionar uno de los números de las opciones.");
 				ejecutarAgregarComboAPedido();
@@ -153,7 +184,7 @@ public class Aplicacion {
 				ProductoMenu productoSeleccionado = productos.get(opcion - 1);
 				Producto productoModificado = preguntarSiDeseaAgregarAdicionales(productoSeleccionado);
 				pedido.agregarProducto(productoModificado);
-				System.out.println("Producto agregado al pedido.");
+				System.out.println(productoModificado.getNombre() + " agregado al pedido.");
 			} else {
 				System.out.println("Debe seleccionar uno de los números de las opciones.");
 				ejecutarAgregarProductoIndividualAPedido();

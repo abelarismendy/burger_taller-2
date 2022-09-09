@@ -1,5 +1,8 @@
-Pedido #0 para avel residente en xd 123
+Pedido #0 para abel residente en calle 13
 Items del pedido:
- -combo corral queso $23850
+ -combo corral $22050
+ -corral $16000 + tomate + tomate - piña
+ -agua $2000
+ -coca cola $3000
 
-Precio neto: $23850 IVA: $4531 Total: $28381
+Precio neto: $43050 IVA: $8179 Total: $51229
