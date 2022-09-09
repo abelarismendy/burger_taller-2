@@ -10,12 +10,14 @@ public class Restaurante {
     private ArrayList<Pedido> pedidos;
     private ArrayList<Combo> combos;
     private Pedido pedidoEnCurso;
+    private ArrayList<ProductoMenu> bebidas;
 
     public Restaurante() {
         this.menuBase = new ArrayList<ProductoMenu>();
         this.ingredientes = new ArrayList<Ingrediente>();
         this.pedidos = new ArrayList<Pedido>();
         this.combos = new ArrayList<Combo>();
+        this.bebidas = new ArrayList<ProductoMenu>();
     }
 
     public void iniciarPedido(String nombreCliente, String direccionCliente) {
@@ -87,6 +89,25 @@ public class Restaurante {
         }
     }
 
+    private void cargarBebidas(File archivoBebidas) {
+        // read file and create menu items and add them to the list
+        try {
+            Scanner myReader = new Scanner(archivoBebidas);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                String[] datos = data.split(";");
+                String nombre = datos[0];
+                int precio = Integer.parseInt(datos[1]);
+                ProductoMenu producto = new ProductoMenu(nombre, precio);
+                bebidas.add(producto);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
     private void cargarCombos(File archivoCombos) {
         // read file and create combos and add them to the list
         try {
@@ -123,10 +144,11 @@ public class Restaurante {
         return null;
     }
 
-    public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
+    public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos, File archivoBebidas) {
         cargarIngredientes(archivoIngredientes);
         cargarMenu(archivoMenu);
         cargarCombos(archivoCombos);
+        cargarBebidas(archivoBebidas);
     }
 
     public ArrayList<Pedido> getPedidos() {
@@ -135,6 +157,10 @@ public class Restaurante {
 
     public ArrayList<Combo> getCombos() {
         return combos;
+    }
+
+    public ArrayList<ProductoMenu> getBebidas() {
+        return bebidas;
     }
 
 }

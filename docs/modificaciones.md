@@ -11,4 +11,35 @@ funcionalidad sobreescribiendo el método equals de pedido y de las otras clases
 **Piense con mucho cuidado cómo va a saber de qué tipo específico es un elemento particular dentro de 
 un pedido**
 
+## Implementación
+
+### 1. Bebidas
+
+Se incluye un nuevo archivo ([bebidas.txt](../data/bebidas.txt)) en la carpeta data para cargar las bebidas por separado. Se añade un nuevo atributo a la clase Restaurante:
+```java
+this.bebidas = new ArrayList<ProductoMenu>();
+```
+
+Además, se añade un metodo que permite cargar las bebidas. Funciona exactamente igual que el metodo de cargar menú pero esta vez se añade a la lista de bebidas.
+
+```java
+    private void cargarBebidas(File archivoBebidas) {
+        // read file and create menu items and add them to the list
+        try {
+            Scanner myReader = new Scanner(archivoBebidas);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                String[] datos = data.split(";");
+                String nombre = datos[0];
+                int precio = Integer.parseInt(datos[1]);
+                ProductoMenu producto = new ProductoMenu(nombre, precio);
+                bebidas.add(producto);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+```
 # [&#8592;](../README.md)

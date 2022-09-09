@@ -1,0 +1,4 @@
+coca cola; 3000
+pepsi; 3000
+postobon; 3500
+agua; 2000
