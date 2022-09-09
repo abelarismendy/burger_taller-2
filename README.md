@@ -30,3 +30,5 @@ Más información en el siguiente [documento.](docs/hamburguesas.pdf)
 ## [Parte 1: Implementar el modelo de clases de la lógica](docs/implement.md)
 
 ## [Parte 2: Implementar una consola para la aplicación](docs/consola.md)
+
+## [Parte 3: Modificaciones a la aplicación](docs/modificaciones.md)
