@@ -9,7 +9,7 @@ a seleccionar las opciones el usuario, etc.
 3. Implemente la consola para la aplicación
 4. Ejecute su aplicación y compruebe que funciona correctamente
 
-
+## **Puede encontrar el código fuente de la versión original de la aplicación [aquí.](https://github.com/DPOO202202-AM/taller-2/releases/tag/v2.4)**
 ## Diagrama de flujo de las opciones
 
 ![DIAGRAMA](diagrama_de_flujo.png)
