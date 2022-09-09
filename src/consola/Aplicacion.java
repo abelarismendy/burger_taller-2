@@ -78,7 +78,7 @@ public class Aplicacion {
 		for (ProductoMenu producto : menu) {
 			System.out.println(producto.getNombre() + " - " + producto.getPrecio());
 		}
-		System.out.println("Combos:");
+		System.out.println("\nCombos:");
 		for (Combo combo : restaurante.getCombos()) {
 			System.out.println(combo.getNombre() + " - " + combo.getPrecio());
 		}

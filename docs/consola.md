@@ -16,6 +16,6 @@ a seleccionar las opciones el usuario, etc.
 
 ## Diagrama UML de las clases y métodos
 
-![UML](UML.jpg)
+![UML](UML_update.png)
 
 # [&#8592;](../README.md)

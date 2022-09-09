@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class ProductoAjustado implements Producto {
     private ProductoMenu base;
     // list of ingredients to add
-    private List<Ingrediente> agregados;
+    private ArrayList<Ingrediente> agregados;
     // list of ingredients to remove
-    private List<Ingrediente> eliminados;
+    private ArrayList<Ingrediente> eliminados;
 
     public ProductoAjustado(ProductoMenu base) {
         this.base = base;

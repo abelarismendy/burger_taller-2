@@ -1,6 +1,5 @@
-Pedido #0 para ANGEL residente en 12233
+Pedido #0 para avel residente en xd 123
 Items del pedido:
- -combo especial $32084
- -gaseosa $8500 + piña + lechuga - cebolla grille
+ -combo corral queso $23850
 
-Precio neto: $40584 IVA: $7710 Total: $48294
+Precio neto: $23850 IVA: $4531 Total: $28381
